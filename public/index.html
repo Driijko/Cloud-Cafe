@@ -8,6 +8,22 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyANXRe6AalJFQRsdFe7YmEFNfkWASoH-Cc",
+        authDomain: "ninja-firestore-tut-91ca7.firebaseapp.com",
+        databaseURL: "https://ninja-firestore-tut-91ca7.firebaseio.com",
+        projectId: "ninja-firestore-tut-91ca7",
+        storageBucket: "ninja-firestore-tut-91ca7.appspot.com",
+        messagingSenderId: "726547228339",
+        appId: "1:726547228339:web:bd8d51340c795761e072c6"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      // console.log(db);
+    </script>
 
     <title>Cloud Cafe</title>
   </head>
