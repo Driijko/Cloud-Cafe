@@ -1,14 +1,16 @@
 import React, {useContext} from 'react';
+import firebase from "./firebase";
 
 import Context from "./store/Context";
 
 function App() {
 
-  const {test} = useContext(Context);
+  const {cafes} = useContext(Context);
 
   return (
     <div className="App">
-      <div>{test}</div>
+      <div>{cafes[0].id}</div>
+      
     </div>
   );
 }
