@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import firebase from "./firebase";
 
 import Context from "./store/Context";
 
@@ -9,7 +8,17 @@ function App() {
 
   return (
     <div className="App">
-      <div>{cafes[0].id}</div>
+      <h1>Cloud Cafe</h1>
+      <div className="content">
+
+        <form id="add-cafe-form">
+          <input type="text" name="name" placeholder="Cafe Name" />
+          <input type="text" name="city" placeholder="Cafe City" />
+          <button>Add Cafe</button>
+        </form>
+
+      </div>
+      
       
     </div>
   );
