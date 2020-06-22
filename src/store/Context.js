@@ -5,7 +5,7 @@ const Context = createContext();
 
 function ContextProvider(props) {
 
-  const [cafes, setCafes] = useState("hello");
+  const [cafes, setCafes] = useState();
 
   useEffect(()=> {
     firebase.firestore().collection("cafes").onSnapshot(snapshot=> {
