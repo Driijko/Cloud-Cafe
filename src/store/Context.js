@@ -7,21 +7,6 @@ function ContextProvider(props) {
 
   const [cafes, setCafes] = useState();
 
-  // useEffect(()=> {
-  //   firebase.firestore().collection("cafes").onSnapshot(snapshot=> {
-  //     const newCafes = snapshot.docs.map((doc)=> {
-  //       return (
-  //         {
-  //           id: doc.id,
-  //           ...doc.data()
-  //         }
-  //       )
-  //     }
-  //   )
-  //   setCafes(newCafes);
-  //   })
-  // }, [])
-
   useEffect(()=> {
     firebase.firestore().collection("cafes").orderBy("name").onSnapshot(snapshot => {
       const newCafes = snapshot.docs.map((doc)=> {
