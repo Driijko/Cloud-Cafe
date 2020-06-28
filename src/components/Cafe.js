@@ -6,7 +6,7 @@ export default function Cafe(props) {
       <span>{props.cafeData.name}</span>
       <span>{props.cafeData.city}</span>
       <div id="deleteButton" onClick={props.handleClick}>x</div>
-      <div id="editButton">edit</div>
+      <div id="editButton" onClick={props.handleClick}>edit</div>
     </li>
   )
 }

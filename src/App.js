@@ -5,6 +5,7 @@ import firebase from "./firebase";
 import Context from "./store/Context";
 
 import Cafe from "./components/Cafe";
+import EditForm from "./components/EditForm";
 
 // COMPONENT /////////////////////////////////////////////////////////////////////////////
 function App() {
@@ -13,7 +14,7 @@ function App() {
   // Data
   const {cafes} = useContext(Context);
 
-  // Components
+  // Cafe List Components
   const [cafeComponents, setCafeComponents] = useState(<div>LOADING DATA...</div>)
   useEffect(()=> {
     if (cafes) {
@@ -22,6 +23,9 @@ function App() {
      }))
     }
   }, [cafes])
+
+  // Edit Form Component
+  const [editFormComponent, setEditFormComponent] = useState(<div></div>)
 
   // Input
   const [newCafeName, setNewCafeName] = useState("");
@@ -48,10 +52,20 @@ function App() {
       setNewCafeName("");
       setNewCafeCity("");
     }
-    if (e.target.id === "deleteButton") {
+    else if (e.target.id === "deleteButton") {
       let id = e.target.parentElement.id;
       firebase.firestore().collection("cafes").doc(id).delete();
     }
+    else if (e.target.id === "editButton") {
+      const cafeName = e.target.parentElement.childNodes[0].innerHTML;
+      const cafeCity = e.target.parentElement.childNodes[1].innerHTML;
+      const cafeId = e.target.parentElement.id;
+      setEditFormComponent(<EditForm cafeData={{name: cafeName, city: cafeCity, id: cafeId}} removeForm={removeForm}/>)
+    }
+  }
+
+  function removeForm() {
+    setEditFormComponent(<div></div>)
   }
 
 
@@ -70,6 +84,8 @@ function App() {
         <ul id="cafe-list">
           {cafeComponents}
         </ul>
+
+        {editFormComponent}
 
       </div>
       
