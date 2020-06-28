@@ -7,8 +7,10 @@ import Context from "./store/Context";
 import Cafe from "./components/Cafe";
 import EditForm from "./components/EditForm";
 
-// COMPONENT /////////////////////////////////////////////////////////////////////////////
-function App() {
+
+
+
+export default function App() {
 
   // STATE ///////////////////////////////////////////////////////////////////////////////
   // Data
@@ -25,7 +27,7 @@ function App() {
   }, [cafes])
 
   // Edit Form Component
-  const [editFormComponent, setEditFormComponent] = useState(<div></div>)
+  const [editFormComponent, setEditFormComponent] = useState(null)
 
   // Input
   const [newCafeName, setNewCafeName] = useState("");
@@ -65,7 +67,7 @@ function App() {
   }
 
   function removeForm() {
-    setEditFormComponent(<div></div>)
+    setEditFormComponent(null)
   }
 
 
@@ -93,5 +95,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

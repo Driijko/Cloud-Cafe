@@ -1,6 +1,9 @@
+// IMPORTS ///////////////////////////////////////////////////////////////////////////////////////////////
 import React, {useState} from "react"
-
 import firebase from "../firebase";
+
+
+
 
 export default function EditForm(props) {
 
@@ -8,6 +11,8 @@ export default function EditForm(props) {
   const [cafeName, setCafeName] = useState(props.cafeData.name);
   const [cafeCity, setCafeCity] = useState(props.cafeData.city);
 
+
+  // EVENTS /////////////////////////////////////////////////////////////////////////////////////////
   function handleChange(e) {
     if (e.target.id === "editNameInput") {
       setCafeName(e.target.value);
@@ -27,9 +32,11 @@ export default function EditForm(props) {
   }
 
 
+  // RENDER ///////////////////////////////////////////////////////////////////////////////////////
   return(
     <form>
-      <div>Edit a Cafe:</div>
+      <hr />
+      <h3>Edit a Cafe:</h3>
       <input id="editNameInput" type="text" name="name" value={cafeName} onChange={handleChange}/>
       <input id="editCityInput" type="text" name="city" value={cafeCity} onChange={handleChange}/>
       <button onClick={handleClick}>SAVE</button>
