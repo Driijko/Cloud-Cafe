@@ -24,8 +24,8 @@ function App() {
   }, [cafes])
 
   // Input
-  const [newCafeName, setNewCafeName] = useState(null);
-  const [newCafeCity, setNewCafeCity] = useState(null);
+  const [newCafeName, setNewCafeName] = useState("");
+  const [newCafeCity, setNewCafeCity] = useState("");
 
 
   // EVENTS ////////////////////////////////////////////////////////////////////////////
@@ -44,11 +44,12 @@ function App() {
       firebase.firestore().collection("cafes").add({
         name: newCafeName,
         city: newCafeCity
-      })
+      });
+      setNewCafeName("");
+      setNewCafeCity("");
     }
     if (e.target.id === "deleteButton") {
       let id = e.target.parentElement.id;
-      console.log(id);
       firebase.firestore().collection("cafes").doc(id).delete();
     }
   }
@@ -61,8 +62,8 @@ function App() {
       <div className="content">
 
         <form id="add-cafe-form">
-          <input type="text" name="name" placeholder="Cafe Name" onChange={handleChange} />
-          <input type="text" name="city" placeholder="Cafe City" onChange={handleChange} />
+          <input type="text" name="name" placeholder="Cafe Name" onChange={handleChange} value={newCafeName}/>
+          <input type="text" name="city" placeholder="Cafe City" onChange={handleChange} value={newCafeCity}/>
           <button id="addCafeButton" onClick={handleClick}>Add Cafe</button>
         </form>
 
